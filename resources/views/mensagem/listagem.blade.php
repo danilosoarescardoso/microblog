@@ -13,11 +13,18 @@
     <tr>
       <th>Autor</th>
       <th>Mensagens</th>
+      <th>Apagar</th>
+
     </tr>
     @foreach ($mensagens as $m)
     <tr>
       <td> {{$m->autor}} </td>
       <td> {{$m->mensagem}} </td>
+      <td> 
+        <a href="/mensagens/remove/{{$m->id}}">
+          <span class="glyphicon glyphicon-trash"></span>
+        </a>
+      </td>
     </tr>
     @endforeach
   </table>

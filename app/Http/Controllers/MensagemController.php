@@ -26,4 +26,11 @@ class MensagemController extends Controller
         return redirect()
             ->action('MensagemController@lista');    
         }
+
+    public function remove($id){
+        $mensagem = Mensagem::find($id);
+        $mensagem-> delete();
+        return redirect()->action('MensagemController@lista');
+
+    }
 }
