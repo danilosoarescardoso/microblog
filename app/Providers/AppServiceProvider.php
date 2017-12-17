@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Microblog\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
