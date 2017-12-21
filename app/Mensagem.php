@@ -3,6 +3,7 @@
 namespace Microblog;
 
 use Illuminate\Database\Eloquent\Model;
+use Microblog\Comentario;
 
 class Mensagem extends Model
 {
@@ -11,5 +12,10 @@ class Mensagem extends Model
 	public $timestamps = false;
     
     protected $fillable = 
-    	array('autor', 'mensagem');
+    	array('autor', 'mensagem, msg_id');
+
+    public function comentario(){
+    	return $this->hasMany('Comentario');
+    }
+
 }
