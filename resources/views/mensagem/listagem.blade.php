@@ -13,6 +13,7 @@
     <tr>
       <th>Autor</th>
       <th>Mensagens</th>
+      <th>Detalhes</th>
       <th>Apagar</th>
 
     </tr>
@@ -20,6 +21,11 @@
     <tr>
       <td> {{$m->autor}} </td>
       <td> {{$m->mensagem}} </td>
+      <td> 
+        <a href="/mensagens/mostra/{{$m->id}}">
+          <span class="glyphicon glyphicon-eye-open"></span>
+        </a>
+      </td>
       <td> 
         <a href="/mensagens/remove/{{$m->id}}">
           <span class="glyphicon glyphicon-trash"></span>

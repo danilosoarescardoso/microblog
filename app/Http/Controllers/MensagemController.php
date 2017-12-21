@@ -1,8 +1,7 @@
-<?php
-
-namespace Microblog\Http\Controllers;
-use Microblog\Mensagem;
+<?php namespace Microblog\Http\Controllers;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Microblog\Mensagem;
 use Microblog\Http\Requests\MensagemRequest;
 
 class MensagemController extends Controller
@@ -32,5 +31,15 @@ class MensagemController extends Controller
         $mensagem-> delete();
         return redirect()->action('MensagemController@lista');
 
+    }
+
+    public function mostra($id){
+
+        $resposta = DB::select('select * from mensagens where id = ?', [$id]);
+
+        if(empty($resposta)) {
+            return "Essa mensagem não existe";
+        }
+        return view('mensagem.detalhes')->with('m', $resposta[0]);
     }
 }

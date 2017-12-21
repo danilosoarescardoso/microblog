@@ -19,4 +19,6 @@ Route::get('/mensagens', 'MensagemController@lista');
 Route::get('/mensagens/novo', 'MensagemController@novo');
 Route::match(array('GET', 'POST'), '/mensagens/adiciona', 'MensagemController@adiciona');
 Route::get('/mensagens/remove/{id?}', 'MensagemController@remove');
+Route::get('/mensagens/mostra/{id?}', 'MensagemController@mostra');
+
 
