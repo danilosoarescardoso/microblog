@@ -2,16 +2,20 @@
 
 @section('conteudo')
 
-<h1>Detalhes da mensagem {{$m->id}} </h1>
 
-<ul>
-  <li>
-    <b>Autor:</b>  {{$m->autor}} 
-  </li>
-  <li>
-    <b>Descrição:</b> {{$m->mensagem}}  	
-  </li><br>
-</ul>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <h1>Detalhes da mensagem {{$m->id}} </h1>
+  </div>
+</div>
+
+  <div class="panel panel-info">
+  <div class="panel-heading">{{$m->autor}}</div>
+  <div class="panel-body">
+    {{$m->mensagem}}
+  </div>
+</div>
 
 @if(count($c) >= 1)
 
@@ -19,15 +23,13 @@
   
   @foreach ($c as $comentario)
 
-    <ul>
-      <li>
-        <b>Quem comentou</b>  {{$comentario->autor}} 
-      </li>
-      <li>
-        <b>Comentário</b> {{$comentario->comentario}}    
-      </li><br>
+  <div class="panel panel-default">
+    <div class="panel-heading">{{$comentario->autor}}</div>
+    <div class="panel-body">
+      {{$comentario->comentario}} 
+    </div>
+  </div>
 
-    </ul>
   @endforeach
 
 @else

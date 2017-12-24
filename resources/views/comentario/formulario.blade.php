@@ -2,7 +2,13 @@
 
 @section('conteudo')
 
-<h1>Novo comentário</h1>
+
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <h1>Novo comentário</h1>
+  </div>
+</div>
 
 @if (count($errors) > 0)
   <div class="alert alert-danger">
@@ -16,19 +22,18 @@
 
 <input type="hidden" name="_token" value="{{ Session::token() }}">
 
-<h5>Detalhes da mensagem</h5>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <h5>Detalhes da mensagem</h5>
+  </div>
+</div>
 
-<ul>
-  <li>
-    <b>Autor:</b>  {{$m->autor}} 
-  </li>
-  <li>
-    <b>Descrição:</b> {{$m->mensagem}}    
-  </li><br>
-
-</ul>
-
-
+<div class="panel panel-info">
+  <div class="panel-heading">{{$m->autor}}</div>
+  <div class="panel-body">
+    {{$m->mensagem}}
+  </div>
+</div>
 
 <form action="/comentarios/adiciona" method="post">
   <div class="form-group">
