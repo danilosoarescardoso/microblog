@@ -2,6 +2,7 @@
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Microblog\Mensagem;
+use Microblog\Comentario;
 use Microblog\Http\Requests\MensagemRequest;
 
 class MensagemController extends Controller
@@ -35,11 +36,15 @@ class MensagemController extends Controller
 
     public function mostra($id){
 
-        $resposta = DB::select('select * from mensagens where id = ?', [$id]);
-
-        if(empty($resposta)) {
-            return "Essa mensagem não existe";
+        $mensagens = DB::select('select * from mensagens where id = ?', [$id]);
+        $antigos = Comentario::where('msg_id', $id)->get();
+        //'select * from comentarios where msg_id = ?', [$id]
+        
+        if(empty($mensagens)) {
+            return "Este comentário não é permitido";
         }
-        return view('mensagem.detalhes')->with('m', $resposta[0]);
+        return view('mensagem.detalhes')
+        ->with('m', $mensagens[0])
+        ->with('c', $antigos);
     }
 }

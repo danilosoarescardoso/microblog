@@ -12,23 +12,21 @@ class ComentarioController extends Controller
     // criar novo comentário
     public function novo($id){
 
-    	$resposta = DB::select('select * from mensagens where id = ?', [$id]);
+    	$mensagens = DB::select('select * from mensagens where id = ?', [$id]);
 
-    	if(empty($resposta)) {
+
+    	if(empty($mensagens)) {
     	    return "Essa mensagem não existe";
     	}
 
-    	return view('comentario.formulario')->with('m', $resposta[0]);
-    
+        return view('comentario.formulario')->with('m', $mensagens[0]);
+
     }
 
     public function adiciona(ComentarioRequest $request){
 
         Comentario::create($request->all());
 
-        return "salvo!";
-
-        //redirect()
-        //    ->action('MensagemController@lista');    
+        return redirect()->action('MensagemController@lista');    
         }
 }
